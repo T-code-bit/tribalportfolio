@@ -103,3 +103,125 @@
     width: 0;
     height: 0;
 }
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        display: block;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-color);
+        position: absolute;
+        transition: all 0.3s ease;
+    }
+
+    .menu-icon span:nth-child(1) {
+        top: 0;
+    }
+
+    .menu-icon span:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .menu-icon span:nth-child(3) {
+        bottom: 0;
+    }
+
+    .menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+        top: 50%;
+        transform: rotate(45deg);
+    }
+
+    .menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+        bottom: 50%;
+        transform: rotate(-45deg);
+    }
+
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .menu-toggle:checked ~ .menu-overlay {
+        transform: translateX(0);
+    }
+
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    .mobile-nav ul li {
+        margin: 20px 0;
+    }
+
+    .mobile-nav ul li a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 24px;
+        transition: color 0.3s ease;
+    }
+
+    .mobile-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    .mobile-contact-info {
+        margin-top: 40px;
+        text-align: center;
+    }
+
+    .mobile-social-links {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .social-icon {
+        margin: 0 10px;
+        color: var(--text-color);
+        text-decoration: none;
+    }
+}
