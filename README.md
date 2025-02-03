@@ -282,3 +282,39 @@ Project Link: [https://github.com/T-code-bit/tribalportfolio](https://github.com
 ---
 
 **Crafted with 💖 by TRIBAL | Digital Experience Designer**
+
+# 🚀 TRIBAL Digital Portfolio
+
+## Overview
+Innovative personal portfolio showcasing digital design and development expertise.
+
+## 🛠 Tech Stack
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+
+## ✨ Features
+- Responsive Design
+- Interactive UI
+- Dark/Light Theme
+- Animated Interactions
+- Mobile-Friendly
+
+## 🚀 Quick Start
+```bash
+git clone https://github.com/T-code-bit/tribalportfolio.git
+cd tribalportfolio
+# Open index.html in browser
+```
+
+## 🤝 Contributing
+1. Fork Repository
+2. Create Feature Branch
+3. Commit Changes
+4. Push to Branch
+5. Open Pull Request
+
+## 📜 License
+MIT License
+
+**Crafted with 💖 by TRIBAL**
