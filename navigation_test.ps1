@@ -99,7 +99,7 @@ function Invoke-NavigationTest {
 Invoke-NavigationTest
 
 # Optional: Generate Test Report
-function Generate-NavigationTestReport {
+function Write-NavigationTestReport {
     $reportPath = "c:\Users\Admin\TRIBAL PORTFOLIO\navigation_test_report.txt"
     $report = @"
 TRIBAL Portfolio - Navigation System Test Report
@@ -122,4 +122,4 @@ Recommendation: Manually verify test results
     Write-Host "📋 Test report generated: $reportPath" -ForegroundColor Cyan
 }
 
-Generate-NavigationTestReport
+Write-NavigationTestReport
