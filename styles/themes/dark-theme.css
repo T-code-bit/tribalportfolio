@@ -64,7 +64,6 @@ body {
 /* Specific Component Theming */
 .dark-theme .nav {
     background-color: var(--nav-bg);
-    backdrop-filter: blur(10px);
 }
 
 .dark-theme .section {
