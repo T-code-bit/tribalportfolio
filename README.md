@@ -154,3 +154,131 @@ Run `accessibility_audit.ps1` to:
 
 ## License
 MIT License
+
+# 🚀 TRIBAL Portfolio Website
+
+<div align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg" alt="Version">
+  <img src="https://img.shields.io/badge/status-active-success.svg" alt="Status">
+  <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="License">
+</div>
+
+## 🌟 About the Project
+
+### Digital Experience Designer Portfolio
+
+TRIBAL is a cutting-edge personal portfolio showcasing innovative digital solutions, technological expertise, and creative problem-solving across multiple domains.
+
+---
+
+## 🔧 Technology Stack
+
+### Languages & Frameworks
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+### Design & Styling
+- Responsive Mobile-First Design
+- Dark/Light Theme Support
+- Advanced CSS Animations
+- Interactive UI Components
+
+---
+
+## ✨ Key Features
+
+### 🎨 Design Highlights
+- Fully responsive layout
+- Smooth navigation transitions
+- Interactive button animations
+- Particle effect interactions
+- Sound-based user feedback
+
+### 🚀 Performance Optimizations
+- Minimal JavaScript footprint
+- Efficient CSS animations
+- Lazy loading of resources
+- Optimized asset management
+
+### 🔊 Interactive Elements
+- 3D button transformations
+- Particle burst effects
+- Hover and click sound interactions
+- Dynamic content rendering
+
+---
+
+## 🛠 Project Structure
+
+```
+TRIBAL-PORTFOLIO/
+│
+├── assets/
+│   ├── images/
+│   └── sounds/
+│
+├── scripts/
+│   ├── main.js
+│   ├── mobile-navigation.js
+│   └── button-interactions.js
+│
+├── styles/
+│   ├── base.css
+│   ├── responsive.css
+│   └── mobile-nav.css
+│
+├── index.html
+├── about.html
+├── skills.html
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Modern web browser
+- Git
+- Code editor (VS Code recommended)
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/T-code-bit/tribalportfolio.git
+
+# Navigate to project directory
+cd tribalportfolio
+
+# Open with your preferred browser
+open index.html
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 📞 Contact
+
+TRIBAL - [Your Email]
+
+Project Link: [https://github.com/T-code-bit/tribalportfolio](https://github.com/T-code-bit/tribalportfolio)
+
+---
+
+**Crafted with 💖 by TRIBAL | Digital Experience Designer**
