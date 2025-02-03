@@ -1,48 +1,15 @@
-// Explicit Mobile Navigation Script
 (function() {
-    // Logging function with multiple channels
+    // Minimal logging function
     function log(message, type = 'log') {
-        const methods = {
-            'log': console.log,
-            'warn': console.warn,
-            'error': console.error
-        };
-        
-        // Browser console
-        methods[type](`🚀 MOBILE NAV: ${message}`);
-        
-        // Optional: Add visual logging to page
-        const logContainer = document.getElementById('mobile-nav-log') || 
-            (() => {
-                const container = document.createElement('div');
-                container.id = 'mobile-nav-log';
-                container.style.cssText = `
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    background: black;
-                    color: lime;
-                    padding: 10px;
-                    z-index: 9999;
-                    font-family: monospace;
-                `;
-                document.body.appendChild(container);
-                return container;
-            })();
-        
-        logContainer.innerHTML += `<div>${message}</div>`;
+        // Intentionally left minimal for potential future debugging
     }
 
     // Comprehensive Mobile Navigation Creation
     function createMobileNavigation() {
         try {
-            log('Initializing Mobile Navigation', 'warn');
-
             // Detect navigation container
             const originalNav = document.querySelector('.nav-links');
             if (!originalNav) {
-                log('No .nav-links found! Check HTML structure.', 'error');
                 return;
             }
 
@@ -65,7 +32,6 @@
                 height: 20px;
                 z-index: 1000;
                 cursor: pointer;
-                background: red;
             `;
 
             // Create mobile menu
@@ -95,7 +61,6 @@
 
             // Toggle functionality
             mobileToggle.addEventListener('click', () => {
-                log('Mobile Menu Toggled', 'warn');
                 mobileToggle.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
                 
@@ -108,28 +73,19 @@
                 }
             });
 
-            // Responsive show/hide
-            function checkMobileView() {
+            // Responsive visibility
+            function updateMobileVisibility() {
                 const isMobile = window.innerWidth <= 768;
-                log(`Mobile View Detected: ${isMobile}`, 'warn');
-                
-                if (isMobile) {
-                    mobileToggle.style.display = 'block';
-                    originalNav.style.display = 'none';
-                } else {
-                    mobileToggle.style.display = 'none';
-                    mobileMenu.style.display = 'none';
-                    originalNav.style.display = 'flex';
-                }
+                mobileToggle.style.display = isMobile ? 'block' : 'none';
+                originalNav.style.display = isMobile ? 'none' : 'flex';
             }
 
-            // Initial check and resize listener
-            checkMobileView();
-            window.addEventListener('resize', checkMobileView);
+            // Initial and responsive setup
+            updateMobileVisibility();
+            window.addEventListener('resize', updateMobileVisibility);
 
-            log('Mobile Navigation Successfully Created', 'log');
         } catch (error) {
-            log(`Error creating mobile navigation: ${error.message}`, 'error');
+            console.error('Mobile Navigation Setup Failed:', error);
         }
     }
 
