@@ -1,0 +1,47 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --transition-speed: 300ms;
+}
+
+[data-theme='dark'] {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --accent-color: #cf6679;
+}
+
+/* Base Theme Styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 
+        background-color var(--transition-speed) ease,
+        color var(--transition-speed) ease;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform var(--transition-speed) ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.2) rotate(15deg);
+}
+
+#theme-icon {
+    display: block;
+}
