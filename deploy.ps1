@@ -19,7 +19,10 @@ try {
         $githubUsername = Read-Host "Enter GitHub Username"
         $repositoryName = "tribal-portfolio"
     }
-
+cd "c:\Users\Admin\TRIBAL PORTFOLIO"
+& "C:\Program Files\Git\cmd\git.exe" remote remove origin
+& "C:\Program Files\Git\cmd\git.exe" remote add origin "https://github.com/T-code-bit/tribalportfolio.git"
+& "C:\Program Files\Git\cmd\git.exe" push -u origin main
     # Validate GitHub username
     if ([string]::IsNullOrWhiteSpace($githubUsername)) {
         throw "GitHub username cannot be empty. Please provide your GitHub username."
