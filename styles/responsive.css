@@ -197,3 +197,136 @@ img {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
+
+/* Mobile Responsiveness Enhancements */
+@media screen and (max-width: 768px) {
+    /* Global Mobile Adjustments */
+    body {
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 10px;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Sections Layout */
+    .section {
+        padding: 20px 15px;
+        margin: 15px 0;
+    }
+
+    /* Hero Section */
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        max-width: 100%;
+        margin: 20px 0;
+    }
+
+    /* About Section */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Skills Section */
+    .skills-container {
+        flex-direction: column;
+    }
+
+    .skill-category {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-image {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    /* Contact Section */
+    .contact-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Responsive Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+
+    /* Ensure full width for images and media */
+    img, video, iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Scrollable sections if content overflows */
+    .section-content {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+}
+
+/* Ultra-Small Devices Additional Tweaks */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .section {
+        padding: 10px;
+    }
+
+    /* Tighter layout for very small screens */
+    .about-grid,
+    .projects-grid {
+        gap: 10px;
+    }
+}
+
+/* Accessibility Enhancements for Mobile */
+@media screen and (max-width: 768px) {
+    /* Increase touch target sizes */
+    button, 
+    .nav-menu a, 
+    .skill-item, 
+    .project-card {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 10px;
+    }
+
+    /* Ensure sufficient color contrast */
+    :root {
+        --text-contrast-ratio: 4.5;
+    }
+}

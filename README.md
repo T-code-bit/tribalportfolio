@@ -55,6 +55,35 @@ Run `accessibility_audit.ps1` to:
 - Check WCAG compliance
 - Generate detailed accessibility report
 
+## Mobile Responsiveness Testing
+
+### Testing Tools
+- `mobile_test.html`: Interactive device simulator
+- `mobile_responsiveness_test.ps1`: Automated browser testing script
+
+### How to Test
+1. Open `mobile_test.html` in a web browser
+2. Run `mobile_responsiveness_test.ps1` as an administrator
+
+### Supported Test Devices
+- iPhone SE (375x667)
+- iPhone 12/13 Pro (390x844)
+- Samsung Galaxy S21 (360x800)
+- iPad Mini (768x1024)
+
+### Responsiveness Checklist
+- [ ] Navigation menu collapses/expands
+- [ ] Text remains readable
+- [ ] Images scale correctly
+- [ ] Touch targets are 44x44 pixels minimum
+- [ ] No horizontal scrolling
+- [ ] Sections stack vertically
+
+### Troubleshooting
+- Ensure browsers are installed
+- Run script with administrator privileges
+- Check console logs for any issues
+
 ## Troubleshooting
 - Ensure all scripts have necessary dependencies
 - Check GitHub Actions logs for deployment issues
