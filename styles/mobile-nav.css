@@ -92,3 +92,14 @@
         display: block !important;
     }
 }
+
+/* Completely remove theme toggle */
+.theme-toggle,
+.theme-switch-input,
+.theme-switch-label {
+    display: none !important;
+    visibility: hidden;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
