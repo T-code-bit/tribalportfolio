@@ -1,7 +1,11 @@
+console.log('🚀 Navigation Script Loaded');
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('🌐 DOM Fully Loaded');
     // Navigation Configuration
     const navLinks = document.querySelectorAll('.nav-links a');
     const currentPath = window.location.pathname.split('/').pop();
+    console.log('📍 Current Path:', currentPath);
+    console.log('🔗 Nav Links Found:', navLinks.length);
 
     // Highlight Active Navigation Item
     function highlightActiveNavigation() {
