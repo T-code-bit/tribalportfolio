@@ -1,50 +1,116 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Navigation Configuration
     const navLinks = document.querySelectorAll('.nav-links a');
     const currentPath = window.location.pathname.split('/').pop();
 
-    // Highlight active navigation item
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPath) {
-            link.classList.add('active');
-        } else {
+    // Highlight Active Navigation Item
+    function highlightActiveNavigation() {
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            
+            // Remove active class from all links
             link.classList.remove('active');
+            
+            // Add active class to current page link
+            if (href === currentPath || 
+                (currentPath === '' && href === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Mobile Navigation Toggle
+    function setupMobileNavigation() {
+        const navToggle = document.createElement('div');
+        navToggle.classList.add('mobile-nav-toggle');
+        navToggle.innerHTML = `
+            <div class="hamburger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        `;
+
+        const navMenu = document.createElement('div');
+        navMenu.classList.add('mobile-nav-menu');
+
+        // Clone navigation links
+        const originalNavLinks = document.querySelector('.nav-links');
+        if (originalNavLinks) {
+            const mobileNavLinks = originalNavLinks.cloneNode(true);
+            navMenu.appendChild(mobileNavLinks);
         }
-    });
+
+        // Add to body
+        document.body.appendChild(navToggle);
+        document.body.appendChild(navMenu);
+
+        // Toggle Mobile Menu
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('mobile-menu-open');
+        });
+
+        // Close menu when link clicked
+        const mobileLinks = navMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            });
+        });
+    }
+
+    // Responsive Navigation
+    function setupResponsiveNavigation() {
+        function checkScreenSize() {
+            const isMobile = window.innerWidth <= 768;
+            const originalNavLinks = document.querySelector('.nav-links');
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mobileNavMenu = document.querySelector('.mobile-nav-menu');
+
+            if (isMobile) {
+                if (originalNavLinks) originalNavLinks.style.display = 'none';
+                if (mobileNavToggle) mobileNavToggle.style.display = 'block';
+            } else {
+                if (originalNavLinks) originalNavLinks.style.display = 'flex';
+                if (mobileNavToggle) mobileNavToggle.style.display = 'none';
+                if (mobileNavMenu) mobileNavMenu.classList.remove('active');
+            }
+        }
+
+        // Initial check and add resize listener
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+    }
 
     // Smooth Page Transitions
-    function smoothPageTransition(event) {
-        event.preventDefault();
-        const targetUrl = event.target.getAttribute('href');
-        
-        // Fade out current page
-        document.body.classList.add('page-transition');
-        
-        setTimeout(() => {
-            window.location.href = targetUrl;
-        }, 300);
+    function setupSmoothTransitions() {
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetUrl = link.getAttribute('href');
+                
+                // Fade out current page
+                document.body.classList.add('page-transition');
+                
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 300);
+            });
+        });
     }
 
-    // Add smooth transition to all navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', smoothPageTransition);
-    });
-
-    // Optional: Preload next page for faster navigation
-    function preloadPage(url) {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = url;
-        document.head.appendChild(link);
-    }
-
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        preloadPage(href);
-    });
+    // Initialize Navigation Features
+    highlightActiveNavigation();
+    setupMobileNavigation();
+    setupResponsiveNavigation();
+    setupSmoothTransitions();
 });
 
-// Add transition styles
+// Transition Styles
 const transitionStyles = document.createElement('style');
 transitionStyles.textContent = `
     body {
