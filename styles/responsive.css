@@ -330,3 +330,87 @@ img {
         --text-contrast-ratio: 4.5;
     }
 }
+
+/* Advanced Mobile Performance Optimization */
+@media screen and (max-width: 768px) {
+    /* Resource Hints for Faster Loading */
+    body {
+        contain: layout;  /* Improve rendering performance */
+        will-change: transform;  /* Hint for smoother animations */
+    }
+
+    /* Lazy Loading Preparation */
+    img, video {
+        content-visibility: auto;  /* Modern lazy loading */
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Reduce Repaints and Reflows */
+    .section {
+        transform: translateZ(0);  /* Hardware acceleration */
+        backface-visibility: hidden;
+    }
+
+    /* Touch-Friendly Interactions */
+    .interactive-element {
+        touch-action: manipulation;  /* Prevent double-tap zoom */
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Responsive Typography with Fluid Scaling */
+    :root {
+        --fluid-min-width: 320;
+        --fluid-max-width: 768;
+        --fluid-min-size: 16;
+        --fluid-max-size: 20;
+        font-size: clamp(
+            calc(var(--fluid-min-size) / 16 * 1rem), 
+            calc(1rem * ((var(--fluid-min-size) + (var(--fluid-max-size) - var(--fluid-min-size))) / 16)), 
+            calc(var(--fluid-max-size) / 16 * 1rem)
+        );
+    }
+
+    /* Optimize Text Readability */
+    p, li {
+        line-height: 1.6;
+        letter-spacing: 0.5px;
+        font-optical-sizing: auto;
+    }
+
+    /* Reduce Motion for Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* Network-Aware Loading */
+    @media (max-width: 768px) and (max-resolution: 1dppx) {
+        /* Lighter assets for slower connections */
+        .hero-image {
+            background-image: var(--mobile-hero-image);
+        }
+    }
+}
+
+/* Ultra-Lightweight Mobile Mode */
+@media screen and (max-width: 375px) {
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    /* Extreme Optimization for Tiny Screens */
+    .section {
+        padding: 10px;
+        margin: 5px 0;
+    }
+
+    /* Prioritize Critical Content */
+    .non-critical {
+        display: none;
+    }
+}

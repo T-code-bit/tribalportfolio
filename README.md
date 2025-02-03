@@ -84,6 +84,42 @@ Run `accessibility_audit.ps1` to:
 - Run script with administrator privileges
 - Check console logs for any issues
 
+## Performance and Mobile Optimization
+
+### Key Enhancements
+- Advanced mobile-first CSS optimizations
+- Progressive image loading
+- Touch-friendly navigation
+- Battery-aware performance adjustments
+- Offline support via Service Worker
+
+### Performance Scripts
+- `performance_audit.ps1`: Comprehensive performance analysis
+- `mobile_enhancements.js`: Interactive mobile features
+
+### Mobile Features
+- Swipe gesture navigation
+- Adaptive performance based on battery level
+- Lazy loading for images
+- Responsive typography
+- Reduced motion for accessibility
+
+### Optimization Techniques
+- Hardware acceleration
+- Minimal repaints and reflows
+- Content visibility optimization
+- Network-aware asset loading
+
+### Performance Metrics Goals
+- Lighthouse Score: 90+
+- First Contentful Paint: < 1.5s
+- Time to Interactive: < 2s
+
+### How to Use Performance Tools
+1. Run `performance_audit.ps1`
+2. Review generated performance report
+3. Implement suggested optimizations
+
 ## Troubleshooting
 - Ensure all scripts have necessary dependencies
 - Check GitHub Actions logs for deployment issues
