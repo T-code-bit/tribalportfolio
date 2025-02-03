@@ -84,6 +84,34 @@ Run `accessibility_audit.ps1` to:
 - Run script with administrator privileges
 - Check console logs for any issues
 
+## Navigation Testing
+
+### Navigation Test Script
+- `navigation_test.ps1`: Comprehensive navigation system test
+
+### Test Coverage
+- Desktop browser compatibility
+- Mobile device emulation
+- Cross-browser link verification
+- Responsive menu functionality
+
+### How to Run Navigation Tests
+1. Open PowerShell as Administrator
+2. Navigate to project directory
+3. Run: `.\navigation_test.ps1`
+
+### Test Verification Checklist
+- [ ] All pages load correctly
+- [ ] Navigation menu appears on mobile
+- [ ] Links work across different browsers
+- [ ] Smooth page transitions
+- [ ] Active page highlighting
+
+### Troubleshooting
+- Ensure all browsers are installed
+- Run script with administrator privileges
+- Check generated test report
+
 ## Performance and Mobile Optimization
 
 ### Key Enhancements
