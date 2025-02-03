@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRIBAL | Home</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="styles/components/hero.css">
+    <link rel="stylesheet" href="styles/components/layout.css">
+    <link rel="stylesheet" href="styles/components/about.css">
+    <link rel="stylesheet" href="styles/components/skills.css">
+    <link rel="stylesheet" href="styles/components/projects.css">
+    <link rel="stylesheet" href="styles/components/contact.css">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="styles/themes/dark-theme.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body class="dark-theme">
+    <div id="interactive-background"></div>
+    <div class="portfolio-container">
+        <header class="main-header">
+            <nav class="navigation">
+                <div class="logo">TRIBAL</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-section="home" class="active">Home</a></li>
+                    <li><a href="about.html" data-section="about">About</a></li>
+                    <li><a href="skills.html" data-section="skills">Skills</a></li>
+                    <li><a href="projects.html" data-section="projects">Projects</a></li>
+                    <li><a href="contact.html" data-section="contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch-input">
+                    <label for="theme-switch" class="theme-switch-label">
+                        <span class="theme-switch-icon">🌓</span>
+                    </label>
+                </div>
+            </nav>
+        </header>
+
+        <main class="page-content home-section">
+            <section class="hero">
+                <div class="hero-background"></div>
+                <div class="hero-overlay"></div>
+                <div class="hero-grid">
+                    <div class="hero-text-container">
+                        <span class="greeting-text">Hello, I'm</span>
+                        <h1 class="hero-title-tribal">TRIBAL</h1>
+                        <h2 class="hero-subtitle text-scramble">Digital Experience Designer</h2>
+                        <p class="hero-description-text">Transforming complex challenges into elegant digital solutions through innovative design and cutting-edge technology. With a passion for creating meaningful digital experiences that bridge human creativity and technological potential.</p>
+                        <div class="hero-cta-group">
+                            <a href="contact.html" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Get in Touch
+                            </a>
+                            <a href="projects.html" class="btn btn-secondary">
+                                <i class="fas fa-project-diagram"></i> View Projects
+                            </a>
+                        </div>
+                        <div class="tech-stack-preview">
+                            <h3>Technologies I Love</h3>
+                            <div class="tech-icons">
+                                <i class="fab fa-python" title="Python"></i>
+                                <i class="fab fa-react" title="React"></i>
+                                <i class="fab fa-node-js" title="Node.js"></i>
+                                <i class="fab fa-aws" title="AWS"></i>
+                                <i class="fab fa-docker" title="Docker"></i>
+                                <i class="fab fa-git" title="Git"></i>
+                                <i class="fab fa-linux" title="Linux"></i>
+                                <i class="fab fa-js" title="JavaScript"></i>
+                                <i class="fab fa-kubernetes" title="Kubernetes"></i>
+                                <i class="fab fa-tensorflow" title="TensorFlow"></i>
+                            </div>
+                        </div>
+                        <div class="dynamic-info-section">
+                            <div class="quote-container">
+                                <h3>Inspirational Quote</h3>
+                                <blockquote id="dynamic-quote">Loading inspiring quote...</blockquote>
+                                <cite id="quote-author"></cite>
+                            </div>
+                            <div class="clock-container">
+                                <h3>Current Time (EAT)</h3>
+                                <div id="dynamic-clock" class="clock">00:00:00</div>
+                                <div id="dynamic-date" class="date">Loading date...</div>
+                            </div>
+                        </div>
+                        <div class="view-counter">
+                            <i class="fas fa-eye"></i>
+                            <span id="view-count">0</span> Views
+                        </div>
+                    </div>
+                    <div class="hero-visual-container">
+                        <div class="avatar-container">
+                            <img src="assets/avatar.png" alt="TRIBAL Avatar" class="avatar-image" loading="lazy">
+                            <div class="avatar-status">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Available for Collaboration</span>
+                            </div>
+                        </div>
+                        <div class="rotating-skills-container">
+                            <h3>Core Skills</h3>
+                            <div id="rotating-skills" class="rotating-skills">
+                                <div class="skill-item" data-skill="Cloud Architecture">Cloud Architecture</div>
+                                <div class="skill-item" data-skill="Machine Learning">Machine Learning</div>
+                                <div class="skill-item" data-skill="Full Stack Development">Full Stack Development</div>
+                                <div class="skill-item" data-skill="DevOps Engineering">DevOps Engineering</div>
+                                <div class="skill-item" data-skill="AI/ML Solutions">AI/ML Solutions</div>
+                            </div>
+                        </div>
+                        <div class="hero-stats-grid">
+                            <div class="hero-stat-item">
+                                <div class="stat-icon"><i class="fas fa-code"></i></div>
+                                <div class="stat-content">
+                                    <div class="stat-value" data-target="50">0</div>
+                                    <div class="stat-label">Projects</div>
+                                </div>
+                            </div>
+                            <div class="hero-stat-item">
+                                <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
+                                <div class="stat-content">
+                                    <div class="stat-value" data-target="10">0</div>
+                                    <div class="stat-label">Tech Stacks</div>
+                                </div>
+                            </div>
+                            <div class="hero-stat-item">
+                                <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                                <div class="stat-content">
+                                    <div class="stat-value" data-target="5">0</div>
+                                    <div class="stat-label">Years Exp</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 TRIBAL. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <style>
+        #interactive-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            transition: transform 0.5s ease;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+    </style>
+
+    <script>
+        function createParticles() {
+            const particleBackground = document.getElementById('interactive-background');
+            const particleCount = 50;
+            const colors = ['#00ffff', '#ff00ff', '#00ff00', '#0000ff'];
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Randomize particle properties
+                particle.style.width = `${Math.random() * 10 + 2}px`;
+                particle.style.height = particle.style.width;
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Set initial random position
+                particle.style.position = 'absolute';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Add movement speed data attribute
+                particle.dataset.speed = Math.random() * 0.5 + 0.1;
+                
+                // Add subtle floating animation
+                particle.style.animation = `float ${Math.random() * 3 + 2}s infinite alternate`;
+                
+                particleBackground.appendChild(particle);
+            }
+        }
+
+        // Create particles when page loads
+        window.addEventListener('load', createParticles);
+    </script>
+
+    <!-- Modular JavaScript -->
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/view-counter.js"></script>
+    <script type="module" src="scripts/user-capture.js"></script>
+
+    <!-- Dynamic Content Scripts -->
+    <script>
+        // Inspirational Quotes
+        const quotes = [
+            { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+            { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+            { text: "Technology is best when it brings people together.", author: "Matt Mullenweg" },
+            { text: "Code is poetry in motion.", author: "Unknown" },
+            { text: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
+            { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+            { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+            { text: "In the world of technology, innovation is a continuous journey.", author: "Satya Nadella" },
+            { text: "Programming is not about what you know; it's about what you can figure out.", author: "Chris Pine" },
+            { text: "The art challenges the technology, and the technology inspires the art.", author: "John Lasseter" }
+        ];
+
+        function updateQuote() {
+            const quoteElement = document.getElementById('dynamic-quote');
+            const authorElement = document.getElementById('quote-author');
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            
+            quoteElement.textContent = `"${randomQuote.text}"`;
+            authorElement.textContent = `- ${randomQuote.author}`;
+        }
+
+        // Dynamic Clock (EAT Time Zone)
+        function updateClock() {
+            const clockElement = document.getElementById('dynamic-clock');
+            const dateElement = document.getElementById('dynamic-date');
+            const now = new Date();
+            
+            const options = { 
+                timeZone: 'Africa/Nairobi', 
+                hour12: false,
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            };
+            const dateOptions = { 
+                timeZone: 'Africa/Nairobi',
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            
+            clockElement.textContent = now.toLocaleTimeString('en-US', options);
+            dateElement.textContent = now.toLocaleDateString('en-US', dateOptions);
+        }
+
+        // Rotating Skills
+        function rotateSkills() {
+            const skillsContainer = document.getElementById('rotating-skills');
+            const firstSkill = skillsContainer.firstElementChild;
+            skillsContainer.appendChild(firstSkill);
+        }
+
+        // Initialize and set intervals
+        window.addEventListener('load', () => {
+            updateQuote(); // Initial quote
+            updateClock(); // Initial clock
+            
+            // Update quote every 2 minutes
+            setInterval(updateQuote, 2 * 60 * 1000);
+            
+            // Update clock every second
+            setInterval(updateClock, 1000);
+            
+            // Rotate skills every 3 seconds
+            setInterval(rotateSkills, 3000);
+        });
+    </script>
+
+    <script src="device_test.js"></script>
+</body>
+</html>

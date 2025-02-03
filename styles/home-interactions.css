@@ -1,0 +1,143 @@
+/* Home Screen Interactive Styles with Responsive Design */
+
+@keyframes fadeOut {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.greeting-text, .hero-subtitle {
+    transition: all 0.5s ease;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.5s forwards;
+}
+
+.avatar-image.breathe {
+    animation: breathe 2s infinite ease-in-out;
+}
+
+.status-dot.pulse {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+#inspirational-quote, #quote-author {
+    transition: opacity 0.5s ease;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 992px) {
+    .greeting-text {
+        font-size: 1.2rem;
+    }
+
+    .hero-title-tribal {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .avatar-image {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .greeting-text {
+        font-size: 1rem;
+    }
+
+    .hero-title-tribal {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .avatar-image {
+        max-width: 200px;
+    }
+
+    .inspirational-quote-container {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .greeting-text {
+        font-size: 0.9rem;
+    }
+
+    .hero-title-tribal {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .avatar-image {
+        max-width: 180px;
+    }
+}
+
+/* Accessibility and Performance Optimization */
+@media screen and (prefers-reduced-motion: reduce) {
+    .greeting-text, 
+    .hero-subtitle,
+    .avatar-image,
+    .status-dot {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Touch Device Optimization */
+@media (pointer: coarse) {
+    .hero-section {
+        padding: 1rem;
+    }
+
+    .hero-text-container,
+    .hero-visual-container {
+        text-align: center;
+    }
+}
+
+/* Particle Background Enhancements */
+#interactive-background .particle {
+    transition: transform 0.5s ease;
+}

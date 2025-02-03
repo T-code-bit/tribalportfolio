@@ -1,0 +1,199 @@
+/* Comprehensive Responsive Design */
+
+/* Base Responsive Typography and Layout */
+:root {
+    --base-font-size: 16px;
+    --max-content-width: 1200px;
+}
+
+html {
+    font-size: var(--base-font-size);
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px; /* Minimum supported width */
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Flexible Container */
+.portfolio-container {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* Responsive Grid System */
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Responsive Typography */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-visual-container {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+
+    .portfolio-container {
+        padding: 0 0.5rem;
+    }
+
+    .main-header .navigation {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    html {
+        font-size: 12px;
+    }
+
+    .avatar-container {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .inspirational-quote-container {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ultra-Small Devices */
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 11px;
+    }
+
+    .hero-title-tribal {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Flexible Background */
+#interactive-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    display: none; /* Hide on very small screens */
+}
+
+@media screen and (min-width: 576px) {
+    .particle {
+        display: block;
+    }
+}
+
+/* Touch-Friendly Interactions */
+@media (pointer: coarse) {
+    .nav-links a, 
+    .theme-toggle,
+    .interactive-element {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    #interactive-background, 
+    .theme-toggle {
+        display: none;
+    }
+}
+
+/* Orientation-Based Adjustments */
+@media screen and (orientation: landscape) and (max-width: 992px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* High Resolution Displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2), 
+       screen and (min-resolution: 192dpi) {
+    /* Adjust for high-density displays */
+    .avatar-image {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Accessibility Enhancements */
+@media screen and (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Dynamic Content Responsiveness */
+.dynamic-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}

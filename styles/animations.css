@@ -1,0 +1,68 @@
+/* Subtle Animations and Hover Effects */
+
+/* Card Hover Effect */
+.project-card, 
+.skill-card, 
+.methodology-card, 
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover, 
+.skill-card:hover, 
+.methodology-card:hover, 
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 206, 209, 0.2);
+}
+
+/* Illustration Subtle Movement */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.about-illustration img,
+.skills-illustration img,
+.projects-illustration img,
+.contact-illustration img {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Button Hover Effects */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00CED1;
+    color: #1A1E33;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(0, 206, 209, 0.1);
+    color: #00CED1;
+}
+
+/* Skill and Project Tags */
+.tech-badge, 
+.project-tags .tag {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tech-badge:hover, 
+.project-tags .tag:hover {
+    background-color: #00CED1;
+    color: #1A1E33;
+}
+
+/* Social Icons */
+.social-icons .social-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons .social-link:hover {
+    color: #00CED1;
+    transform: scale(1.2);
+}

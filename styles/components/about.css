@@ -1,0 +1,341 @@
+:root {
+    --accent-color: #00CED1;
+    --background-primary: #1A1E2E;
+    --background-secondary: rgba(36, 41, 67, 0.5);
+    --text-primary: #E0E0E0;
+    --text-secondary: #A0A0A0;
+}
+
+.about-section {
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    padding: 50px 0;
+}
+
+.about-hero {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.about-illustration img {
+    max-width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-intro h1 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.about-intro p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.section-content h1 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.professional-overview,
+.professional-trajectory {
+    display: grid;
+    gap: 30px;
+}
+
+.professional-details,
+.core-expertise,
+.professional-timeline,
+.core-values {
+    background-color: var(--background-secondary);
+    border-radius: 15px;
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.professional-details:hover,
+.core-expertise:hover,
+.professional-timeline:hover,
+.core-values:hover {
+    transform: translateY(-10px);
+}
+
+.professional-details h2,
+.core-expertise h2,
+.professional-timeline h2,
+.core-values h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.professional-details p {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.professional-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(36, 41, 67, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.stat-value {
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.expertise-grid,
+.timeline-grid,
+.values-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.expertise-item,
+.timeline-item,
+.value-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(36, 41, 67, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.expertise-item:hover,
+.timeline-item:hover,
+.value-card:hover {
+    transform: translateY(-10px);
+}
+
+.expertise-icon,
+.timeline-icon,
+.value-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    min-width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.expertise-details h3,
+.timeline-content h3,
+.value-details h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.expertise-details p,
+.timeline-content p,
+.timeline-content ul,
+.value-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.timeline-content ul {
+    padding-left: 20px;
+}
+
+.philosophical-perspective {
+    text-align: center;
+    background-color: var(--background-secondary);
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.philosophical-perspective h2 {
+    color: var(--accent-color);
+    margin-bottom: 30px;
+}
+
+.philosophical-perspective blockquote {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.philosophy-signature {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.personal-growth-section,
+.personal-achievements,
+.interactive-skills-progress {
+    background-color: var(--background-secondary);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.personal-growth-section h2,
+.personal-achievements h2,
+.interactive-skills-progress h2 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.growth-timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.growth-timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(0, 206, 209, 0.2);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.growth-milestone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.growth-milestone:hover {
+    transform: scale(1.1);
+}
+
+.milestone-icon {
+    font-size: 3rem;
+    background-color: var(--background-primary);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.milestone-details {
+    text-align: center;
+    max-width: 200px;
+}
+
+.milestone-details h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.milestone-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    background-color: rgba(36, 41, 67, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+}
+
+.achievement-icon {
+    font-size: 3rem;
+    margin-right: 20px;
+    color: var(--accent-color);
+}
+
+.achievement-details h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.achievement-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.skills-progress-chart {
+    width: 100%;
+    height: 300px;
+    background-color: rgba(36, 41, 67, 0.3);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-grid,
+    .expertise-grid,
+    .timeline-grid,
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .professional-stats {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRIBAL | About Me</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="styles/components/hero.css">
+    <link rel="stylesheet" href="styles/components/layout.css">
+    <link rel="stylesheet" href="styles/components/about.css">
+    <link rel="stylesheet" href="styles/components/skills.css">
+    <link rel="stylesheet" href="styles/components/projects.css">
+    <link rel="stylesheet" href="styles/components/contact.css">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="styles/themes/dark-theme.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <!-- Custom About Page Styles -->
+    <style>
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --background-dark: #0a0a1a;
+            --background-light: #121228;
+        }
+
+        .about-hero-section {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(10,10,26,0.9), rgba(18,18,40,0.95));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,255,255,0.1);
+        }
+
+        .about-hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            animation: pulse 10s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .about-illustration {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .about-illustration img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,255,255,0.2);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+
+        .about-illustration:hover img {
+            transform: rotateY(15deg) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,255,255,0.3);
+        }
+
+        .about-text-content {
+            flex: 2;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-text-content h1 {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .journey-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .journey-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item {
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,255,255,0.2);
+        }
+
+        .timeline-item:hover::before {
+            opacity: 1;
+        }
+
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-matrix-item {
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .skill-matrix-item .skill-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            transition: transform 0.4s ease;
+        }
+
+        .skill-matrix-item:hover .skill-icon {
+            transform: rotate(360deg);
+        }
+
+        .skill-matrix-item::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-matrix-item:hover::after {
+            opacity: 1;
+        }
+
+        .philosophy-section {
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-section blockquote {
+            position: relative;
+            z-index: 2;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .philosophy-section::before {
+            content: '"';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(0,255,255,0.05);
+            top: -5rem;
+            left: -2rem;
+            z-index: 1;
+        }
+
+        .detailed-section {
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detailed-section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid rgba(0,255,255,0.3);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detailed-section .section-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .detailed-subsection {
+            background: rgba(0,255,255,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .detailed-subsection::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), transparent);
+            transition: all 0.4s ease;
+        }
+
+        .detailed-subsection:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,255,255,0.1);
+        }
+
+        .detailed-subsection:hover::before {
+            width: 8px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(0,255,255,0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            background: rgba(0,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .skill-radar-chart {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 2rem auto;
+        }
+
+        .skill-radar-chart .radar-circle {
+            position: absolute;
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .skill-radar-chart .radar-circle:nth-child(1) { width: 30%; height: 30%; }
+        .skill-radar-chart .radar-circle:nth-child(2) { width: 60%; height: 60%; }
+        .skill-radar-chart .radar-circle:nth-child(3) { width: 90%; height: 90%; }
+
+        .skill-radar-chart .skill-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .skill-radar-chart .skill-line {
+            position: absolute;
+            background: rgba(0,255,255,0.2);
+            transform-origin: center;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .interactive-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: rgba(0,255,255,0.05);
+            padding: 1rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.05);
+            background: rgba(0,255,255,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .code-snippet-showcase {
+            background: #0a0a1a;
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-snippet-showcase pre {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            position: relative;
+            z-index: 2;
+        }
+
+        .code-snippet-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            animation: code-snippet-pulse 5s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes code-snippet-pulse {
+            0% { opacity: 0.5; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div id="interactive-background"></div>
+    <div class="portfolio-container">
+        <header class="main-header">
+            <nav class="navigation">
+                <div class="logo">TRIBAL</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-section="home">Home</a></li>
+                    <li><a href="about.html" data-section="about" class="active">About</a></li>
+                    <li><a href="skills.html" data-section="skills">Skills</a></li>
+                    <li><a href="projects.html" data-section="projects">Projects</a></li>
+                    <li><a href="contact.html" data-section="contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch-input">
+                    <label for="theme-switch" class="theme-switch-label">
+                        <span class="theme-switch-icon">🌓</span>
+                    </label>
+                </div>
+            </nav>
+        </header>
+
+        <main class="page-content about-section">
+            <section class="about-hero-section">
+                <div class="about-illustration">
+                    <img src="assets/images/about/about-illustration.svg" alt="TRIBAL Journey Illustration">
+                </div>
+                <div class="about-text-content">
+                    <h1>Digital Architect's Odyssey</h1>
+                    <p class="lead-text">
+                        Navigating the intricate landscape of technological innovation, I transform abstract concepts into tangible digital experiences. My journey is a continuous exploration of the intersection between human creativity and technological potential, where each project is an opportunity to redefine the boundaries of what's possible.
+                    </p>
+                </div>
+            </section>
+
+            <section class="journey-timeline">
+                <div class="timeline-item">
+                    <h3>Technological Inception</h3>
+                    <p>Began coding journey, transforming raw curiosity into computational artistry. Explored the fundamental principles of software design and system architecture.</p>
+                    <small>2015 - First Lines of Code</small>
+                </div>
+                <div class="timeline-item">
+                    <h3>Innovation Catalyst</h3>
+                    <p>Developed groundbreaking AI-driven solutions that challenged traditional enterprise technological paradigms. Pioneered adaptive machine learning frameworks.</p>
+                    <small>2019 - Tech Innovation Milestone</small>
+                </div>
+                <div class="timeline-item">
+                    <h3>Global Impact</h3>
+                    <p>Led international technology teams, driving digital transformation across multiple industries. Implemented scalable, intelligent systems that redefined operational efficiency.</p>
+                    <small>2022 - Global Technology Leadership</small>
+                </div>
+            </section>
+
+            <section class="skills-matrix">
+                <div class="skill-matrix-item">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Software Engineering</h3>
+                    <p>Architecting robust, scalable solutions across diverse technological ecosystems. Expertise in full-stack development and system design.</p>
+                </div>
+                <div class="skill-matrix-item">
+                    <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Designing intelligent systems that learn, adapt, and evolve. Specializing in predictive modeling and advanced algorithmic solutions.</p>
+                </div>
+                <div class="skill-matrix-item">
+                    <div class="skill-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Cloud Architecture</h3>
+                    <p>Crafting resilient, secure, and highly performant cloud-native infrastructures. Expertise in multi-cloud and hybrid cloud strategies.</p>
+                </div>
+            </section>
+
+            <section class="philosophy-section">
+                <h2>Philosophical Approach</h2>
+                <blockquote>
+                    Technology is not merely a tool, but a canvas of infinite potential. Each line of code is a brushstroke, each algorithm a narrative, weaving together the complex tapestry of human innovation and digital possibility.
+                </blockquote>
+            </section>
+
+            <section class="detailed-section professional-expertise">
+                <h2>Professional Expertise Deep Dive</h2>
+                <div class="section-content">
+                    <div class="detailed-subsection software-engineering">
+                        <h3>Software Engineering Mastery</h3>
+                        <p>A holistic approach to software development that transcends traditional coding paradigms. My expertise spans full-stack architecture, microservices design, and scalable system implementation.</p>
+                        
+                        <h4>Key Competencies:</h4>
+                        <ul>
+                            <li>Advanced architectural design of distributed systems</li>
+                            <li>Performance optimization and system scalability</li>
+                            <li>Comprehensive security implementation</li>
+                        </ul>
+
+                        <div class="tech-stack">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">Rust</span>
+                            <span class="tech-badge">Go</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <div class="detailed-subsection ai-ml">
+                        <h3>AI & Machine Learning Innovation</h3>
+                        <p>Pioneering intelligent systems that learn, adapt, and evolve. My approach combines cutting-edge algorithmic design with pragmatic problem-solving strategies.</p>
+                        
+                        <h4>Research & Implementation Areas:</h4>
+                        <ul>
+                            <li>Predictive modeling for complex systems</li>
+                            <li>Natural language processing</li>
+                            <li>Reinforcement learning algorithms</li>
+                            <li>Ethical AI development</li>
+                        </ul>
+
+                        <div class="tech-stack">
+                            <span class="tech-badge">TensorFlow</span>
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Keras</span>
+                            <span class="tech-badge">NLTK</span>
+                            <span class="tech-badge">Transformers</span>
+                        </div>
+                    </div>
+
+                    <div class="detailed-subsection cloud-architecture">
+                        <h3>Cloud Native Architecture</h3>
+                        <p>Designing resilient, secure, and highly performant cloud infrastructures that enable digital transformation across diverse technological landscapes.</p>
+                        
+                        <h4>Strategic Focus Areas:</h4>
+                        <ul>
+                            <li>Multi-cloud and hybrid cloud strategies</li>
+                            <li>Serverless computing architectures</li>
+                            <li>Cloud security and compliance</li>
+                            <li>Infrastructure as Code (IaC)</li>
+                        </ul>
+
+                        <div class="tech-stack">
+                            <span class="tech-badge">AWS</span>
+                            <span class="tech-badge">Azure</span>
+                            <span class="tech-badge">GCP</span>
+                            <span class="tech-badge">Terraform</span>
+                            <span class="tech-badge">Ansible</span>
+                            <span class="tech-badge">CloudFormation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detailed-section professional-achievements">
+                <h2>Notable Achievements & Impact</h2>
+                <div class="section-content">
+                    <div class="detailed-subsection innovation-awards">
+                        <h3>Innovation Recognition</h3>
+                        <ul>
+                            <li>🏆 Global Tech Innovator Award (2022)</li>
+                            <li>🌟 AI Research Excellence Grant</li>
+                            <li>🚀 Emerging Technology Leadership Medal</li>
+                        </ul>
+                    </div>
+
+                    <div class="detailed-subsection industry-contributions">
+                        <h3>Industry Contributions</h3>
+                        <ul>
+                            <li>Published 12+ peer-reviewed research papers</li>
+                            <li>Keynote speaker at international tech conferences</li>
+                            <li>Open-source contributor to critical infrastructure projects</li>
+                        </ul>
+                    </div>
+
+                    <div class="detailed-subsection global-impact">
+                        <h3>Global Technology Leadership</h3>
+                        <ul>
+                            <li>Led digital transformation for Fortune 500 companies</li>
+                            <li>Developed AI solutions impacting multiple industries</li>
+                            <li>Mentored 50+ emerging technology professionals</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detailed-section professional-philosophy">
+                <h2>Technological Philosophy</h2>
+                <div class="section-content">
+                    <div class="detailed-subsection core-beliefs">
+                        <h3>Guiding Principles</h3>
+                        <blockquote>
+                            "Technology is not just a tool, but a bridge between human potential and infinite possibilities. My work is dedicated to creating systems that don't just solve problems, but expand the very boundaries of what we perceive as possible."
+                        </blockquote>
+                        
+                        <h4>Fundamental Beliefs:</h4>
+                        <ul>
+                            <li>Ethical technology development</li>
+                            <li>Human-centric design</li>
+                            <li>Continuous learning and adaptation</li>
+                            <li>Interdisciplinary approach to innovation</li>
+                        </ul>
+                    </div>
+
+                    <div class="detailed-subsection vision">
+                        <h3>Future Vision</h3>
+                        <p>I envision a technological ecosystem where artificial intelligence and human creativity coalesce, creating solutions that are not just intelligent, but profoundly empathetic and transformative.</p>
+                        
+                        <h4>Emerging Focus Areas:</h4>
+                        <ul>
+                            <li>Sustainable technology solutions</li>
+                            <li>Democratizing advanced technologies</li>
+                            <li>Bridging technological divides</li>
+                        </ul>
+                    </div>
+
+                    <div class="detailed-subsection continuous-growth">
+                        <h3>Commitment to Growth</h3>
+                        <p>My journey is defined by an insatiable curiosity and a commitment to pushing technological boundaries. Each project is an opportunity to learn, innovate, and reimagine what's possible.</p>
+                        
+                        <h4>Current Learning Trajectories:</h4>
+                        <ul>
+                            <li>Quantum computing fundamentals</li>
+                            <li>Advanced neuromorphic engineering</li>
+                            <li>Ethical AI governance</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="detailed-section skill-visualization">
+                <h2>Skills Visualization</h2>
+                <div class="skill-radar-chart" id="skillRadarChart">
+                    <div class="radar-circle"></div>
+                    <div class="radar-circle"></div>
+                    <div class="radar-circle"></div>
+                </div>
+
+                <div class="interactive-stats">
+                    <div class="stat-item" data-stat="projects">
+                        <div class="stat-number" id="projectsCount">0</div>
+                        <div class="stat-label">Completed Projects</div>
+                    </div>
+                    <div class="stat-item" data-stat="contributions">
+                        <div class="stat-number" id="contributionsCount">0</div>
+                        <div class="stat-label">Open Source Contributions</div>
+                    </div>
+                    <div class="stat-item" data-stat="technologies">
+                        <div class="stat-number" id="technologiesCount">0</div>
+                        <div class="stat-label">Technologies Mastered</div>
+                    </div>
+                </div>
+
+                <div class="code-snippet-showcase">
+                    <pre><code id="dynamicCodeSnippet">
+// Loading innovative solutions...
+def create_future(imagination, technology):
+    return Innovation(
+        potential=imagination.expand(),
+        implementation=technology.transform()
+    )
+                    </code></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 TRIBAL. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Modular JavaScript -->
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/view-counter.js"></script>
+    <script type="module" src="scripts/user-capture.js"></script>
+
+    <script>
+        function createParticles() {
+            const particlesContainer = document.getElementById('interactive-background');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Create particles when page loads
+        window.addEventListener('load', createParticles);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillData = [
+                { name: 'Software Engineering', x: 0.7, y: 0.3 },
+                { name: 'AI & ML', x: 0.3, y: 0.7 },
+                { name: 'Cloud Architecture', x: 0.9, y: 0.5 },
+                { name: 'Cybersecurity', x: 0.5, y: 0.9 },
+                { name: 'Full-stack Development', x: 0.2, y: 0.2 }
+            ];
+
+            const radarChart = document.getElementById('skillRadarChart');
+            const projectsCount = document.getElementById('projectsCount');
+            const contributionsCount = document.getElementById('contributionsCount');
+            const technologiesCount = document.getElementById('technologiesCount');
+            const codeSnippet = document.getElementById('dynamicCodeSnippet');
+
+            // Skill Radar Chart Visualization
+            skillData.forEach((skill, index) => {
+                const point = document.createElement('div');
+                point.classList.add('skill-point');
+                point.style.left = `${skill.x * 100}%`;
+                point.style.top = `${skill.y * 100}%`;
+                point.dataset.skillName = skill.name;
+                radarChart.appendChild(point);
+
+                setTimeout(() => {
+                    point.style.opacity = 1;
+                }, index * 200);
+            });
+
+            // Animated Counter
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const counter = setInterval(() => {
+                    start += increment;
+                    element.textContent = Math.round(start);
+                    if (start >= target) {
+                        element.textContent = target;
+                        clearInterval(counter);
+                    }
+                }, 16);
+            }
+
+            // Trigger counters
+            animateCounter(projectsCount, 87);
+            animateCounter(contributionsCount, 150);
+            animateCounter(technologiesCount, 42);
+
+            // Dynamic Code Snippet
+            const codeSnippets = [
+                `def innovate(challenge):
+    return solution.transform(
+        creativity=unlimited,
+        technology=cutting_edge
+    )`,
+                `class FutureBuilder:
+    def __init__(self, vision):
+        self.potential = vision.expand()
+        self.impact = self.create_change()`,
+                `async def solve_complex_problems(data):
+    insights = await ai.analyze(data)
+    return Innovation(insights)`
+            ];
+
+            let snippetIndex = 0;
+            setInterval(() => {
+                codeSnippet.textContent = codeSnippets[snippetIndex];
+                snippetIndex = (snippetIndex + 1) % codeSnippets.length;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

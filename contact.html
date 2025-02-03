@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRIBAL | Contact Me</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base.css">
+    
+    <!-- Responsive Styles -->
+    <link rel="stylesheet" href="styles/responsive.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="styles/components/layout.css">
+    <link rel="stylesheet" href="styles/components/contact.css">
+    
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="styles/themes/dark-theme.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- SweetAlert for notifications -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="dark-theme">
+    <div id="interactive-background"></div>
+    <div class="portfolio-container">
+        <header class="main-header">
+            <nav class="navigation">
+                <div class="logo">TRIBAL</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" data-section="home">Home</a></li>
+                    <li><a href="about.html" data-section="about">About</a></li>
+                    <li><a href="skills.html" data-section="skills">Skills</a></li>
+                    <li><a href="projects.html" data-section="projects">Projects</a></li>
+                    <li><a href="contact.html" data-section="contact" class="active">Contact</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="theme-switch" class="theme-switch-input">
+                    <label for="theme-switch" class="theme-switch-label">
+                        <span class="theme-switch-icon">🌓</span>
+                    </label>
+                </div>
+            </nav>
+        </header>
+
+        <main class="page-content contact-section">
+            <section class="contact-content">
+                <div class="section-content">
+                    <div class="contact-hero">
+                        <div class="contact-illustration">
+                            <img src="assets/images/contact/contact-illustration.svg" alt="Contact Illustration">
+                        </div>
+                        <div class="contact-intro">
+                            <h1>Let's Create Together</h1>
+                            <p>Open to collaboration, innovation, and turning visionary ideas into transformative digital solutions.</p>
+                        </div>
+                    </div>
+
+                    <h1>Let's Connect</h1>
+                    <p class="section-description">Have a project in mind or just want to discuss technology? I'm always open to interesting conversations and collaboration opportunities.</p>
+                    
+                    <div class="contact-grid">
+                        <div class="contact-form">
+                            <form id="contact-form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" autocomplete="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" autocomplete="off" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-details">
+                                <h2>Contact Information</h2>
+                                <p><i class="fas fa-envelope"></i> contact@tribal.tech</p>
+                                <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                                <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+                            </div>
+                            
+                            <div class="social-links">
+                                <h2>Connect Online</h2>
+                                <div class="social-icons">
+                                    <a href="https://linkedin.com/in/tribal" target="_blank" class="social-link" title="LinkedIn">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://github.com/tribal" target="_blank" class="social-link" title="GitHub">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://twitter.com/tribal" target="_blank" class="social-link" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://medium.com/@tribal" target="_blank" class="social-link" title="Medium">
+                                        <i class="fab fa-medium"></i>
+                                    </a>
+                                    <a href="https://dev.to/tribal" target="_blank" class="social-link" title="Dev.to">
+                                        <i class="fab fa-dev"></i>
+                                    </a>
+                                    <a href="https://stackoverflow.com/users/tribal" target="_blank" class="social-link" title="Stack Overflow">
+                                        <i class="fab fa-stack-overflow"></i>
+                                    </a>
+                                    <a href="https://dribbble.com/tribal" target="_blank" class="social-link" title="Dribbble">
+                                        <i class="fab fa-dribbble"></i>
+                                    </a>
+                                    <a href="https://behance.net/tribal" target="_blank" class="social-link" title="Behance">
+                                        <i class="fab fa-behance"></i>
+                                    </a>
+                                    <a href="https://instagram.com/tribal" target="_blank" class="social-link" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://www.tiktok.com/@tribal" target="_blank" class="social-link" title="TikTok">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                    <a href="https://wa.me/1234567890" target="_blank" class="social-link" title="WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                    <a href="https://facebook.com/tribal" target="_blank" class="social-link" title="Facebook">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professional-networks">
+                    <h2>Professional Networks</h2>
+                    <div class="network-grid">
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>LinkedIn</h3>
+                                <p>Connect for professional networking, recommendations, and industry insights.</p>
+                                <a href="https://linkedin.com/in/tribal" target="_blank" class="btn btn-secondary">View Profile</a>
+                            </div>
+                        </div>
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>GitHub</h3>
+                                <p>Explore my open-source projects, contributions, and technical repositories.</p>
+                                <a href="https://github.com/tribal" target="_blank" class="btn btn-secondary">View Repositories</a>
+                            </div>
+                        </div>
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-dev"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>Dev.to</h3>
+                                <p>Technical blog posts, coding insights, and community discussions.</p>
+                                <a href="https://dev.to/tribal" target="_blank" class="btn btn-secondary">Read Articles</a>
+                            </div>
+                        </div>
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-medium"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>Medium</h3>
+                                <p>In-depth articles on technology, innovation, and personal insights.</p>
+                                <a href="https://medium.com/@tribal" target="_blank" class="btn btn-secondary">Explore Blog</a>
+                            </div>
+                        </div>
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-tiktok"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>TikTok</h3>
+                                <p>Creative tech content, behind-the-scenes, and professional journey highlights.</p>
+                                <a href="https://www.tiktok.com/@tribal" target="_blank" class="btn btn-secondary">Watch Videos</a>
+                            </div>
+                        </div>
+                        <div class="network-card">
+                            <div class="network-icon">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <div class="network-details">
+                                <h3>Facebook</h3>
+                                <p>Professional updates, tech community engagement, and networking.</p>
+                                <a href="https://facebook.com/tribal" target="_blank" class="btn btn-secondary">Connect</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="consultation-services">
+                    <h2>Consultation & Collaboration</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Technical Consulting</h3>
+                            <p>Strategic guidance on technology architecture, system design, and digital transformation.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <h3>Project Collaboration</h3>
+                            <p>Open to joining innovative projects that push technological boundaries and create meaningful impact.</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Mentorship</h3>
+                            <p>Providing mentorship and knowledge sharing for emerging tech professionals and students.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 TRIBAL. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Modular JavaScript -->
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/view-counter.js"></script>
+    <script type="module" src="scripts/user-capture.js"></script>
+
+    <script>
+        // Create particles when page loads
+        window.addEventListener('load', createParticles);
+    </script>
+    <script>
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            Swal.fire({
+                title: 'Message Sent!',
+                text: `Thank you, ${name}! Your message has been sent successfully.`,
+                icon: 'success',
+                confirmButtonText: 'Close'
+            });
+            form.reset();
+        });
+    </script>
+</body>
+</html>

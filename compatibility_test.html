@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Compatibility Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .test-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1>Device Compatibility Diagnostic Page</h1>
+        <p>Open browser console (F12) to see detailed diagnostics</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Responsive Layout Test</h2>
+        <div id="responsive-test" style="width: 100%; background-color: #3498db; color: white; padding: 20px;">
+            Resize browser window to test responsiveness
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Touch Interaction Test</h2>
+        <button id="touch-test" style="padding: 20px; font-size: 16px;">
+            Tap or Click Me
+        </button>
+    </div>
+
+    <script src="device_test.js"></script>
+    <script>
+        // Additional interactive tests
+        document.getElementById('touch-test').addEventListener('click', () => {
+            console.log('Touch/Click interaction test successful');
+        });
+
+        // Responsive design test
+        window.addEventListener('resize', () => {
+            const testDiv = document.getElementById('responsive-test');
+            testDiv.textContent = `Current width: ${window.innerWidth}px`;
+        });
+    </script>
+</body>
+</html>

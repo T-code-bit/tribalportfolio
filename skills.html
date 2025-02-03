@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIBAL | Technical Skills Ecosystem</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/components/layout.css">
+    <link rel="stylesheet" href="styles/components/skills.css">
+    <link rel="stylesheet" href="styles/themes/dark-theme.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #00ffff;
+            --secondary-color: #ff00ff;
+            --background-dark: #0a0a1a;
+            --background-light: #121228;
+        }
+
+        .skills-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .skills-hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .skills-illustration {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .skills-illustration img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,255,255,0.2);
+        }
+
+        .skills-intro {
+            flex: 2;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .skills-intro h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--background-light);
+            border: 1px solid rgba(0,255,255,0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .skill-category:hover::before {
+            opacity: 1;
+        }
+
+        .skill-progress-container {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            height: 20px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .tech-stack-visualization {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(0,255,255,0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tech-badge:hover {
+            background: rgba(0,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .skill-depth-analysis {
+            margin-top: 2rem;
+        }
+
+        .skill-matrix {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .skill-matrix-item {
+            flex: 1;
+        }
+
+        .radar-chart {
+            height: 200px;
+            width: 200px;
+            background: var(--background-light);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-chart {
+            height: 200px;
+            width: 200px;
+            background: var(--background-light);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <div class="portfolio-container">
+        <header class="main-header">
+            <nav class="navigation">
+                <div class="logo">TRIBAL</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="skills.html" class="active">Skills</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="page-content skills-page">
+            <section class="skills-content">
+                <div class="skills-hero">
+                    <div class="skills-illustration">
+                        <img src="assets/images/skills/skills-illustration.svg" alt="Skills Illustration">
+                    </div>
+                    <div class="skills-intro">
+                        <h1>Technological Skill Ecosystem</h1>
+                        <p>A comprehensive visualization of my technological capabilities, spanning multiple domains and cutting-edge technologies.</p>
+                    </div>
+                </div>
+
+                <div class="section-content">
+                    <div class="skills-description">
+                        <div class="skill-category-grid">
+                            <div class="skill-category">
+                                <i class="skill-category-icon fas fa-code"></i>
+                                <h3>Software Engineering</h3>
+                                
+                                <div class="skill-item">
+                                    <span class="skill-name">Full-stack Development</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="90"></div>
+                                    </div>
+                                    <span class="skill-level">Expert</span>
+                                </div>
+
+                                <div class="skill-item">
+                                    <span class="skill-name">Microservices Architecture</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="85"></div>
+                                    </div>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+
+                                <div class="tech-stack-visualization">
+                                    <span class="tech-badge">Python</span>
+                                    <span class="tech-badge">JavaScript</span>
+                                    <span class="tech-badge">TypeScript</span>
+                                    <span class="tech-badge">Node.js</span>
+                                    <span class="tech-badge">React</span>
+                                    <span class="tech-badge">Django</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-category">
+                                <i class="skill-category-icon fas fa-brain"></i>
+                                <h3>AI & Machine Learning</h3>
+                                
+                                <div class="skill-item">
+                                    <span class="skill-name">Deep Learning</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="88"></div>
+                                    </div>
+                                    <span class="skill-level">Expert</span>
+                                </div>
+
+                                <div class="skill-item">
+                                    <span class="skill-name">Natural Language Processing</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="82"></div>
+                                    </div>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+
+                                <div class="tech-stack-visualization">
+                                    <span class="tech-badge">TensorFlow</span>
+                                    <span class="tech-badge">PyTorch</span>
+                                    <span class="tech-badge">Keras</span>
+                                    <span class="tech-badge">NLTK</span>
+                                    <span class="tech-badge">Scikit-learn</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-category">
+                                <i class="skill-category-icon fas fa-cloud"></i>
+                                <h3>Cloud & DevOps</h3>
+                                
+                                <div class="skill-item">
+                                    <span class="skill-name">Cloud Infrastructure</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="92"></div>
+                                    </div>
+                                    <span class="skill-level">Expert</span>
+                                </div>
+
+                                <div class="skill-item">
+                                    <span class="skill-name">CI/CD Pipelines</span>
+                                    <div class="skill-progress-container">
+                                        <div class="skill-progress-bar" style="width: 0;" data-progress="85"></div>
+                                    </div>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+
+                                <div class="tech-stack-visualization">
+                                    <span class="tech-badge">AWS</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">Kubernetes</span>
+                                    <span class="tech-badge">Jenkins</span>
+                                    <span class="tech-badge">Terraform</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-depth-analysis">
+                    <h2>Skill Depth Analysis</h2>
+                    <div class="skill-matrix">
+                        <div class="skill-matrix-item">
+                            <h3>Technical Breadth</h3>
+                            <div class="radar-chart" id="breadth-chart"></div>
+                            <p>Comprehensive expertise across multiple technology domains, enabling versatile problem-solving and innovative solution design.</p>
+                        </div>
+                        <div class="skill-matrix-item">
+                            <h3>Learning Trajectory</h3>
+                            <div class="timeline-chart" id="learning-timeline"></div>
+                            <p>Continuous learning and skill evolution, with a focus on emerging technologies and industry best practices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="interactive-skill-section">
+                    <h2>Interactive Skill Progression</h2>
+                    <div class="interactive-skill-graph" id="skillGraph"></div>
+                </section>
+            </section>
+        </main>
+
+        <footer class="main-footer">
+            <p>&copy; 2025 TRIBAL. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/view-counter.js"></script>
+    <script type="module" src="scripts/user-capture.js"></script>
+
+    <script>
+        // Create particles when page loads
+        window.addEventListener('load', createParticles);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate Skill Progress Bars
+            const progressBars = document.querySelectorAll('.skill-progress-bar');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const progressObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBar = entry.target;
+                        const progress = progressBar.dataset.progress;
+                        progressBar.style.width = `${progress}%`;
+                        progressObserver.unobserve(progressBar);
+                    }
+                });
+            }, observerOptions);
+
+            progressBars.forEach(bar => progressObserver.observe(bar));
+
+            // Interactive Skill Graph (Placeholder)
+            function createSkillGraph() {
+                const graph = document.getElementById('skillGraph');
+                graph.innerHTML = '<p style="color: var(--primary-color); text-align: center; padding: 2rem;">Skill Progression Graph Coming Soon</p>';
+            }
+
+            createSkillGraph();
+        });
+    </script>
+</body>
+</html>
